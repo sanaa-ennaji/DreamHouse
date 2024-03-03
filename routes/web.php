@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\HouseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +26,17 @@ Route::get('/home' , function (){
 Route::get('/register' , function (){
     return view('register');
 });
+
+Route::get('/houses' , function (){
+    return view('houses');
+});
+
+Route::get('/login' , function (){
+    return view('login');
+});
+
+    Route::post('/OwnersRegister', [UserController::class, 'OwnerRegister']);
+    Route::post('/createHouse', [HouseController::class, 'createHouse']);
+    Route::post('/login', [UserController::class, 'login']);
+
+

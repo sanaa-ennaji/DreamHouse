@@ -65,17 +65,17 @@
                     </div>
                     <div class="w-full px-3 sm:w-1/2">
                         <div class="mb-5">
-                            <label for="adress" class="mb-3 block text-base font-medium text-[#07074D]">
+                            <label for="address" class="mb-3 block text-base font-medium text-[#07074D]">
                                 adress
                             </label>
-                            <input type="text" name="adress" id="adress" placeholder="your adress"
+                            <input type="text" name="address" id="address" placeholder="your adress"
                                 class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
                         </div>
                     </div>
                 </div>
         
                 <div>
-                    <button
+                    <button type="submit"
                         class="hover:shadow-form w-full rounded-md bg-black py-3 px-8 text-center text-base font-semibold text-white outline-none">
                        Resgister
                     </button>

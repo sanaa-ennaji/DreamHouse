@@ -13,17 +13,16 @@
     <link rel="stylesheet" href="css/home.css">
     <style>
     #bg {
+        background-image: url(images/pexels-binyamin-mellish-186077.jpg);
             background-repeat: no-repeat;
             background-size: cover;
+            height: 100vh;
            
         }
 
 #bgf{
 background-color: rgb(225, 232, 153)
    
-}
-#btn{
-    background-color:#FFD700;
 }
 
 .bgf{
@@ -38,19 +37,19 @@ background-color: rgb(225, 232, 153)
     </style>
 </head>
 <body>
-    <div id="bg">
+    <div id="bg" class="">
     <header>
     
         <nav class=" border-gray-200 px-4 lg:px-6 py-2.5">
             <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                 <a href="#" class="flex items-center ">
-                    <img src="images/lg.png" class="mr-3 h-6 sm:h-9" alt="Logo" />
+                    <img src="images/lg.png" class="mr-3 h-12 sm:h-13" alt="Logo" />
                     
                 </a>
                 <div class="flex items-center lg:order-2">
-                    <a href="#" class="text-yellow-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none" data-modal-target="static-modal" data-modal-toggle="static-modal"><button>Log in</button></a>
-                    <a href="#" id="btn" class="text-black  bg-[#FFD700] focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none">
-                        <button id="openModalBtn">Register</button>
+                    <a href="/login" class="text-yellow-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none" ><button>Log in</button></a>
+                    <a href="/register"  class="text-yellow-800 bg-black focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 focus:outline-none">
+                        <button >Register</button>
                     </a>
                     <button  data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
                         <span class="sr-only">Open main</span>
@@ -66,13 +65,13 @@ background-color: rgb(225, 232, 153)
                         </li>
                       
                         <li>
-                            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">contact</a>
+                            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">contact</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">drivers</a>
+                            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">drivers</a>
                         </li>
                         <li>
-                            <a href="#" class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">trajets</a>
+                            <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 lg:dark:hover:text-white lg:dark:hover:bg-transparent">trajets</a>
                         </li>
                     </ul>
                 </div>
@@ -89,8 +88,8 @@ background-color: rgb(225, 232, 153)
                     sales taxi compliance, companies around the world use MonGrandTaxi to simplify their payment stack.
                 </p>
 
-                <a id="btn" href="#"
-                    class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100">
+                <a  href="#"
+                    class="text-yellow-800 bg-black inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100">
                     get started
                 </a>
             </div>
@@ -262,19 +261,19 @@ background-color: rgb(225, 232, 153)
 
         <script>
         // Array of background images
-        const backgroundImages = [ 'images/pexels-binyamin-mellish-186077.jpg',
-            'images/pexels-vika-glitter-1648776.jpg',
-            'images/pexels-terry-magallanes-2635038.jpg',];
+        // const backgroundImages = [ 'images/pexels-binyamin-mellish-186077.jpg',
+        //     'images/pexels-vika-glitter-1648776.jpg',
+        //     'images/pexels-terry-magallanes-2635038.jpg',];
 
-        // Function to change the background image
-        function changeBackground() {
-            const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-            const imageUrl = backgroundImages[randomIndex];
-            document.getElementById('bg').style.backgroundImage = `url(${imageUrl})`;
-        }
+        // // Function to change the background image
+        // function changeBackground() {
+        //     const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+        //     const imageUrl = backgroundImages[randomIndex];
+        //     document.getElementById('bg').style.backgroundImage = `url(${imageUrl})`;
+        // }
 
-        // Change background every 5 seconds (adjust the interval as needed)
-        setInterval(changeBackground, 10000);
+      
+        // setInterval(changeBackground, 4000);
     </script>
 </body>
    

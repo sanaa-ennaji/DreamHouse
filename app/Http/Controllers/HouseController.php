@@ -35,12 +35,12 @@ public function createHouse(Request $request)
         'size' => 'nullable|string',
         'description' => 'nullable|string',
         'images' => 'nullable|array',
-        'images.*' => 'image|mimes:jpeg,png,jpg,gif', // Allow only image files and limit size to 2MB
+        'images.*' => 'image|mimes:jpeg,png,jpg,gif', 
     ];
 
     $validatedData = $request->validate($rules);
 
-    // Process and save the images
+    
     $imagePaths = [];
     if ($request->hasFile('images')) {
         foreach ($request->file('images') as $image) {
@@ -51,19 +51,24 @@ public function createHouse(Request $request)
         }
     }
 
-  
     $validatedData['images'] = json_encode($imagePaths);
 
    
     $validatedData['user_id'] = Auth::id();
     
-
-
-    // Create the house using the validated data
     $house = $this->houseRepository->createHouse($validatedData);
 
-    return response()->json(['message' => 'House created successfully', 'house' => $house], 201);
+    // return response()->json(['message' => 'House created successfully', 'house' => $house], 201);
+    return view('/houses');
 }
   
+public function index()
+{
+  
+    $houses = $this->houseRepository->getAllOrderedByCity();
+
+    return view('houses.index', compact('houses'));
+}
+
 }
 

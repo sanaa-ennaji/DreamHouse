@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\ReservationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,4 +49,5 @@ Route::get('/anonces' , function (){
     Route::get('/anonces', [HouseController::class, 'display'])->name('houses.display');
 
     Route::get('/house/{id}', [HouseController::class, 'show'])->name('houses.show');
+    Route::post('/Reserve', [ReservationController::class, 'create'])->name('reservations.create');
 

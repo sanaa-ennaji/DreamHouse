@@ -18,17 +18,19 @@ class ReservationController extends Controller
 
     public function create(Request $request)
     {
-        // Validation rules for creating a reservation
+        
         $rules = [
-            'status' => ['required', Rule::in(['pending', 'doing', 'done'])],
-            'house_id' => 'required|exists:houses,id',
-            'user_id' => 'required|exists:users,id',
+            'house_id' => 'required',
+        
           
         ];
 
         $validatedData = $request->validate($rules);
-
+       
+        $validatedData['status'] = 'pending';
+      
         $validatedData['user_id'] = Auth::id();
+       
         $reservation = $this->reservationRepository->create($validatedData);
 
      

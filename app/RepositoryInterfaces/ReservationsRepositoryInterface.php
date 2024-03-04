@@ -10,4 +10,5 @@ interface ReservationsRepositoryInterface
     public function create(array $data);
     public function getReservationsByUserId($userId);
     public function updateStatus($id, $status);
+    
 }

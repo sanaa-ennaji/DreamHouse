@@ -72,7 +72,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth'])->group(function () {
-
+    Route::get('/anonces', [HouseController::class, 'search'])->name('houses.search');
     Route::get('/updateHouse/{id}', [HouseController::class, 'edit'])->name('houses.edit');
     Route::put('/update/{id}', [HouseController::class, 'update'])->name('houses.update');
     

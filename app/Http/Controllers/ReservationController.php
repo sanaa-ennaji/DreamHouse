@@ -32,7 +32,7 @@ class ReservationController extends Controller
          $this->reservationRepository->create($validatedData);
 
 
-        return redirect('/anonces');
+        return redirect('/clientReservations');
     }
 
     public function index()

@@ -132,6 +132,24 @@ class HouseController extends Controller
            
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $request->validate([
+            'type' => 'nullable|string',
+            'status' => 'nullable|in:sale,rent',
+            'city' => 'nullable|string',
+        ]);
+
+        $type = $request->input('type');
+        $status = $request->input('status');
+        $city = $request->input('city');
+
+       
+        $houses = $this->houseRepository->searchHouses($type, $status, $city);
+
+        return view('anonces', compact('houses'));
+    }
 }
 
 

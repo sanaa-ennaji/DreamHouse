@@ -64,4 +64,24 @@ class HousesRepository implements HousesRepositoryInterface
         
         return House::where('user_id', $userId)->with('reservations')->get()->pluck('reservations')->flatten();
     }
+
+
+    public function searchHouses($type, $status, $city)
+    {
+        $query = House::query();
+
+        if ($type) {
+            $query->where('type', $type);
+        }
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+
+        if ($city) {
+            $query->where('city', $city);
+        }
+
+        return $query->get();
+    }
 }

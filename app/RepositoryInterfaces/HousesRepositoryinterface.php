@@ -10,6 +10,7 @@ interface HousesRepositoryInterface
 {
     public function  getAll();
     public function getHouseById($id);
+    public function searchHouses($type, $status, $city);
     public function createHouse(array $data);
     public function updateHouse($id, array $data);
     public function deleteHouse($id);

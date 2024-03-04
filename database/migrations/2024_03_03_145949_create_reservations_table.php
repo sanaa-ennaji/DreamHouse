@@ -23,7 +23,6 @@ return new class extends Migration
             ->constrained('users')
             ->onDelete('cascade')
             ->onUpdate('cascade');
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

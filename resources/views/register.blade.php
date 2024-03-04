@@ -7,15 +7,18 @@
     <script src="https://kit.fontawesome.com/d0fb25e48c.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/home.css">
+   <style>
+    
+   </style>
+
     <title>Document</title>
  </head>
  <body>
     
 <div class="min-h-screen  text-gray-900 flex justify-center">
     <div class="flex-1 bg-indigo-100 text-center hidden lg:flex">
-        <div class="m-12 xl:m-16 w-full bg-contain bg-center bg-no-repeat"
-            style="background-image: url('https://storage.googleapis.com/devitary-image-host.appspot.com/15848031292911696601-undraw_designer_life_w96d.svg');">
+        <div class="w-full bg-contain  bg-no-repeat"
+            style="background-image: url('images/pexels-terry-magallanes-2635038.jpg'); ">
         </div>
     </div>
     <div class="flex items-center justify-center p-12">

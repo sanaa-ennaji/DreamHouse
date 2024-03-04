@@ -14,4 +14,7 @@ class Reservatin extends Model
         'user_id',
 
     ];
+
+  
 }
+

@@ -18,9 +18,6 @@ class HouseController extends Controller
     {
         $this->houseRepository = $houseRepository;
     }
-
-
-
    
 public function createHouse(Request $request)
 {
@@ -59,15 +56,15 @@ public function createHouse(Request $request)
     $house = $this->houseRepository->createHouse($validatedData);
 
     // return response()->json(['message' => 'House created successfully', 'house' => $house], 201);
-    return view('/houses');
+    return view('houses');
 }
   
-public function index()
+public function display()
 {
   
     $houses = $this->houseRepository->getAllOrderedByCity();
 
-    return view('houses.index', compact('houses'));
+    return view('anonces', compact('houses'));
 }
 
 }

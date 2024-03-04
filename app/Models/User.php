@@ -28,6 +28,10 @@ class User extends Authenticatable
          
     ];
 
+    public function userHouse(){
+        return $this->hasMany(House::class,'user_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -47,4 +51,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
 }

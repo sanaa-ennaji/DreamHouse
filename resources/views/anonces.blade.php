@@ -81,7 +81,8 @@
             </div>
         </nav>
     </header>
-    <div id="bg" class="antialiased bg-gray-200 font-sans">
+
+    <div id="bg" class=" antialiased bg-gray-200 font-sans">
      
        
             @foreach ($houses as $house)

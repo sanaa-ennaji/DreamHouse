@@ -106,12 +106,7 @@
                         </button>
                     </form>
                 </a>
-
-
-
             </div>
-
-
             <button type="button" class="mt-20 mr-20 flex items-center">
                 <div class="flex-shrink-0 w-10 h-10 relative">
                     <div class="p-1 bg-white rounded-full focus:outline-none focus:ring">
@@ -165,7 +160,7 @@
                 </tr>
             </thead>
             
-@if(count($reservations) > 0)
+
             @foreach($reservations as $reservation)
             <tbody>
                 <tr
@@ -183,7 +178,7 @@
             @endforeach
         </table>
     </div>
-
-    @else
-    <p>You haven't any reservations yet.</p>
-@endif
+   
+        
+    </body>
+</html>

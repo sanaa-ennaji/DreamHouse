@@ -35,6 +35,7 @@ class HouseController extends Controller
             'images' => 'nullable|array',
             'images.*' => 'image|mimes:jpeg,png,jpg,gif',
         ];
+
         $validatedData = $request->validate($rules);
         $imagePaths = [];
         if ($request->hasFile('images')) {
@@ -46,13 +47,13 @@ class HouseController extends Controller
         $validatedData['images'] = json_encode($imagePaths);
         $validatedData['user_id'] = Auth::id();
         $house = $this->houseRepository->createHouse($validatedData);
-        return view('houses');
+        return view('houses', compact('house'));
     }
 
 
-    public function display()
+    public function displayhouses()
     {
-        $houses = $this->houseRepository->getAllOrderedByCity();
+        $houses = $this->houseRepository->getAll();
         return view('anonces', compact('houses'));
     }
 
@@ -87,6 +88,57 @@ class HouseController extends Controller
         }
         $this->houseRepository->deleteHouse($id);
          return view('houses');
+    }
+
+
+    public function edit($id)
+    {
+        // Find the house by ID
+        $house = $this->houseRepository->getHouseById($id);
+
+        // Check if the authenticated user owns the house
+        if (Auth::id() !== $house->user_id) {
+            return redirect()->route('houses.index')->with('error', 'Unauthorized');
+        }
+
+        return view('updateHouse', compact('house'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        // Validate the request data
+        $this->validateUpdate($request);
+
+        // Find the house by ID
+        $house = $this->houseRepository->getHouseById($id);
+
+        // Check if the authenticated user owns the house
+        if (Auth::id() !== $house->user_id) {
+            return redirect()->route('houses.index')->with('error', 'Unauthorized');
+        }
+
+        // Update the house using the validated data
+        $this->houseRepository->updateHouse($id, $request->all());
+
+        return redirect()->route('houses.index')->with('success', 'House updated successfully');
+    }
+
+    // Rename the method to avoid conflicts with the base controller
+    protected function validateUpdate(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'type' => 'required|string',
+            'status' => 'required|in:sale,rent',
+            'city' => 'required|string',
+            'address' => 'required|string',
+            'bedrooms' => 'required|integer',
+            'bathrooms' => 'required|integer',
+            'price' => 'required|string',
+            'size' => 'nullable|string',
+            'description' => 'nullable|string',
+            // Add any other validation rules as needed
+        ]);
     }
 }
 

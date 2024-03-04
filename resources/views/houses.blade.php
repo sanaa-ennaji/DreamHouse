@@ -272,7 +272,7 @@
 
     <h1>Your Houses</h1>
 
-    @if(count($houses) > 0)
+ 
    
     <div class="max-w-2xl mx-auto">
 
@@ -335,7 +335,7 @@
                           {{ $house->price }}
                         </td>
                         <td class="px-6 py-4 text-right">
-                            <a href="#"
+                            <a href="/updateHouse/{{ $house->id }}"
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                         </td>
                         <th scope="col" class="px-6 py-3 text-red">
@@ -355,9 +355,7 @@
             </table>
         </div>
 
-        @else
-        <p>You haven't created any houses yet.</p>
-    @endif
+     
         <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
     </div>
 

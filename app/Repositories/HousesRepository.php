@@ -8,16 +8,17 @@ use App\RepositoryInterfaces\HousesRepositoryInterface;
 
 class HousesRepository implements HousesRepositoryInterface
 {
-    // public function getAllHouses()
+    // public function getAllOrderedByCity()
     // {
-    //     return House::all();
+    //     return House::where('status', true)
+    //         ->orderBy('city')
+    //         ->get();
     // }
 
-    public function getAllOrderedByCity()
+    public function getAll()
     {
-        return House::where('status', true)
-            ->orderBy('city')
-            ->get();
+        return House::all();
+             
     }
     public function getHouseById($id)
     {

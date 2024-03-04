@@ -44,4 +44,17 @@ class HousesRepository implements HousesRepositoryInterface
 
         return $house;
     }
+
+    public function userOwnsHouse($userId, $houseId)
+    {
+        return House::where('id', $houseId)
+            ->where('user_id', $userId)
+            ->exists();
+    }
+
+    public function getReservationsForUserHouses($userId)
+    {
+        
+        return House::where('user_id', $userId)->with('reservations')->get()->pluck('reservations')->flatten();
+    }
 }

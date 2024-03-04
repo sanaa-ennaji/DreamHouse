@@ -4,6 +4,8 @@
 
 namespace App\RepositoryInterfaces;
 
+
+
 interface HousesRepositoryInterface
 {
     public function getAllOrderedByCity();
@@ -11,4 +13,7 @@ interface HousesRepositoryInterface
     public function createHouse(array $data);
     public function updateHouse($id, array $data);
     public function deleteHouse($id);
+    public function userOwnsHouse();
+
+    public function getReservationsForUserHouses($userId);
 }

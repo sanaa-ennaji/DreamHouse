@@ -33,8 +33,8 @@ class ReservationController extends Controller
        
         $reservation = $this->reservationRepository->create($validatedData);
 
-     
-        return response()->json(['message' => 'Reservation created successfully', 'reservation' => $reservation], 201);
+
+        return redirect('/anonces');
     }
 
 

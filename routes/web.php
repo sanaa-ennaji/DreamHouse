@@ -38,16 +38,18 @@ Route::get('/login' , function (){
 Route::get('/anonces' , function (){
     return view('anonces');
 });
-// Route::get('/houses/{id}' , function (){
-//     return view('/h');
-// });
+
+Route::get('/clientRegister' , function (){
+    return view('clientRegister');
+});
 
 
     Route::post('/OwnersRegister', [UserController::class, 'OwnerRegister']);
+    Route::post('/clientsRegister', [UserController::class, 'ClientRegister']);
     Route::post('/createHouse', [HouseController::class, 'createHouse']);
     Route::post('/login', [UserController::class, 'login']);
     Route::get('/anonces', [HouseController::class, 'display'])->name('houses.display');
 
     Route::get('/house/{id}', [HouseController::class, 'show'])->name('houses.show');
     Route::post('/Reserve', [ReservationController::class, 'create'])->name('reservations.create');
-
+    

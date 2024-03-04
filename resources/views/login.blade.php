@@ -20,6 +20,10 @@
 </div>
 
 <div class="lg:p-36 md:p-52 sm:20 p-8 w-full lg:w-1/2">
+  <div class="text-slate-100 items-center">
+    <img src="images/lg.png" alt="" class="h-15 w-16 mx-auto pb-3">
+   <div class="text-center pb-3 text-black text-2xl font-bold ">DreamHouse</div>
+</div>
   <h1 class="text-2xl font-semibold mb-4">Login</h1>
   <form action="/login" method="POST">
     @csrf
@@ -38,7 +42,7 @@
       <a href="#" class="hover:underline">Forgot Password?</a>
     </div>
 
-    <button type="submit" class="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
+    <button type="submit" class="bg-black hover:bg-black-600 text-white font-semibold rounded-md py-2 px-4 w-full">Login</button>
   </form>
 
   <div class="mt-6 text-blue-500 text-center">

@@ -67,8 +67,40 @@ class UserController extends Controller
         $userData['role'] = 'owner';
      
         $user = $this->userRepository->createUser($userData);
-         dd($user);
-        return redirect()->back()->with('success', 'Reservation status updated successfully');
+        auth()->login($user);
+
+        return redirect('/anonces');
+    }
+
+
+
+    public function ClientRegister(Request $request)
+    {
+       
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|min:8',
+            
+          
+        ];
+
+       
+        $validator = Validator::make($request->all(), $rules);
+
+        
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $userData = $request->all();
+        $userData['role'] = 'client';
+     
+        $user = $this->userRepository->createUser($userData);
+          
+        auth()->login($user);
+
+        return redirect('/anonces');
     }
 
 

@@ -74,5 +74,29 @@ public function show($id)
     return view('house', compact('house'));
 }
 
+// public function index()
+// {
+//     // Retrieve the authenticated user's ID
+//     $userId = Auth::id();
+
+//     // Get houses associated with the authenticated user
+//     $houses = $this->houseRepository->getHousesByUserId($userId);
+
+//     return view('houses.index', compact('houses'));
+// }
+
+public function showReservationsForUserHouses()
+{
+   
+    $userId = Auth::id();
+
+  
+    $reservations = $this->houseRepository->getReservationsForUserHouses($userId);
+
+    return view('houses.reservations', compact('reservations'));
+}
+
+
+
 }
 

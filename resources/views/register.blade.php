@@ -24,8 +24,8 @@
     <div class="flex items-center justify-center p-12">
         <div class="mx-auto w-full max-w-[550px] bg-white">
             <div class="text-slate-100 items-center">
-                <img src="images/lg.png" alt="" class="h-14 w-14 mx-auto pb-3">
-               <div class="text-center pb-3 text-black"></div>
+                <img src="images/lg.png" alt="" class="h-15 w-16 mx-auto pb-3">
+               <div class="text-center pb-3 text-black text-2xl font-bold ">DreamHouse</div>
             </div>
             <form method="POST" action="/OwnersRegister">
               @csrf
@@ -87,12 +87,15 @@
                     </button>
                 </div>
             </form>
+            <div class="mt-6 text-blue-500 text-center">
+                <a href="/login" class="hover:underline">log in here</a>
+              </div>
         </div>
     </div>
       
     </div>
 
-<script src="js/popUp.js"></script>
+
 
 </body>
 </html>

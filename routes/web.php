@@ -35,9 +35,7 @@ Route::get('/houses' , function (){
 Route::get('/login' , function (){
     return view('login');
 });
-Route::get('/anonces' , function (){
-    return view('anonces');
-});
+
 
 Route::get('/clientRegister' , function (){
     return view('clientRegister');
@@ -49,7 +47,19 @@ Route::get('/clientRegister' , function (){
     Route::post('/createHouse', [HouseController::class, 'createHouse']);
     Route::post('/login', [UserController::class, 'login']);
     Route::get('/anonces', [HouseController::class, 'display'])->name('houses.display');
+    Route::post('/logout', [UserController::class, 'logout']);
 
     Route::get('/house/{id}', [HouseController::class, 'show'])->name('houses.show');
     Route::post('/Reserve', [ReservationController::class, 'create'])->name('reservations.create');
     
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/houses', [HouseController::class, 'userHouse'])->name('houses.index');
+    });
+
+
+Route::get('/reservation', [HouseController::class, 'showReservationsForUserHouses'])->name('houses.reservations');
+
+Route::middleware(['auth'])->group(function () {
+  
+    Route::delete('/houses/{id}', [HouseController::class, 'destroy'])->name('houses.destroy');
+});

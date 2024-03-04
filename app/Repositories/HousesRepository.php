@@ -45,11 +45,17 @@ class HousesRepository implements HousesRepositoryInterface
         return $house;
     }
 
+    public function getHousesCreatedByUser($userId)
+    {
+    
+        return House::where('user_id', $userId)->get();
+    }
     public function userOwnsHouse($userId, $houseId)
     {
-        return House::where('id', $houseId)
-            ->where('user_id', $userId)
-            ->exists();
+       
+        $house = House::where('id', $houseId)->where('user_id', $userId)->first();
+
+        return $house !== null;
     }
 
     public function getReservationsForUserHouses($userId)

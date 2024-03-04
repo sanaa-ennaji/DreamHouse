@@ -19,7 +19,7 @@ class UserController extends Controller
 
     public function registerClient(Request $request)
     {
-        // Validation rules for client registration
+      
         $rules = [
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users|max:255',
@@ -131,6 +131,11 @@ class UserController extends Controller
         }
 
         return redirect()->back()->with('error', 'Invalid credentials');
+    }
+
+    public function logout (){
+        auth()->logout();
+        return redirect('/home') ;
     }
 
 }

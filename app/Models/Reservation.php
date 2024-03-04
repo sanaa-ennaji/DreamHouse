@@ -16,11 +16,10 @@ class Reservation extends Model
 
     ];
 
-    public function HouseReserved()
+    public function house()
     {
-        return $this->belongsTo(user::class, 'house_id');
+        return $this->belongsTo(House::class);
     }
-
   
 }
 

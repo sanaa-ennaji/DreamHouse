@@ -16,21 +16,19 @@ class ReservationController extends Controller
         $this->reservationRepository = $reservationRepository;
     }
 
+    
     public function create(Request $request)
     {
-        
         $rules = [
             'house_id' => 'required',
-        
-          
         ];
 
         $validatedData = $request->validate($rules);
-       
+
         $validatedData['status'] = 'pending';
-      
+
         $validatedData['user_id'] = Auth::id();
-       
+
         $reservation = $this->reservationRepository->create($validatedData);
 
 

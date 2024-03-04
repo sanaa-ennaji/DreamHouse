@@ -27,6 +27,7 @@
                 <img src="images/lg.png" alt="" class="h-15 w-16 mx-auto pb-3">
                <div class="text-center pb-3 text-black text-2xl font-bold ">DreamHouse</div>
             </div>
+            <h1 class=" pb-3 text-black text-2xl font-bold ">owner Register</h1>
             <form method="POST" action="/OwnersRegister">
               @csrf
                 <div class="mb-5">
@@ -88,7 +89,7 @@
                 </div>
             </form>
             <div class="mt-6 text-blue-500 text-center">
-                <a href="/login" class="hover:underline">log in here</a>
+                <a href="/clientRegister" class="hover:underline">client register</a>
               </div>
         </div>
     </div>

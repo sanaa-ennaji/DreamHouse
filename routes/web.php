@@ -67,6 +67,7 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/clientReservations', [ReservationController::class, 'index'])->name('reservations.index');
+    Route::put('/update/reservation/{id}', [ReservationController::class, 'updateStatus'])->name('reservations.updateStatus');
 });
 
 
@@ -74,4 +75,5 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/updateHouse/{id}', [HouseController::class, 'edit'])->name('houses.edit');
     Route::put('/update/{id}', [HouseController::class, 'update'])->name('houses.update');
+    
 });

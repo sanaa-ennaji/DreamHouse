@@ -26,19 +26,12 @@ class ReservationsRepository implements ReservationsRepositoryInterface
         return Reservation::create($data);
     }
 
-    public function update($id, array $data)
+
+
+
+    public function updateStatus($id, $status)
     {
         $reservation = Reservation::findOrFail($id);
-        $reservation->update($data);
-
-        return $reservation;
-    }
-
-    public function delete($id)
-    {
-        $reservation = Reservation::findOrFail($id);
-        $reservation->delete();
-
-        return $reservation;
+        $reservation->update(['status' => $status]);
     }
 }

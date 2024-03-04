@@ -29,7 +29,7 @@ class ReservationController extends Controller
 
         $validatedData['user_id'] = Auth::id();
 
-        $reservation = $this->reservationRepository->create($validatedData);
+         $this->reservationRepository->create($validatedData);
 
 
         return redirect('/anonces');
@@ -41,6 +41,24 @@ class ReservationController extends Controller
         $reservations = $this->reservationRepository->getReservationsByUserId($userId);
         return view('clientReservations', compact('reservations'));
     }
+   
+
+    public function updateStatus(Request $request, $id)
+    {
+        
+        $request->validate([
+            'status' => 'required|in:pending,doing,done',
+            
+        ]);
+        $reservation = $this->reservationRepository->getById($id);
+        if (Auth::id() !== $reservation->user_id) {
+            return redirect()->route('reservations.index')->with('error', 'Unauthorized');
+        }
+        $this->reservationRepository->updateStatus($id, $request->input('status'));
+
+        return redirect()->route('reservations.index')->with('success', 'Reservation status updated successfully');
+    }
+
 
 
 }

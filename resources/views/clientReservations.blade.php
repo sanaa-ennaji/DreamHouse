@@ -48,7 +48,7 @@
                             home</a>
                     </li>
                     <li>
-                        <a href="/reservation"
+                        <a href="/anonces"
                             class="flex items-center text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200"
                             hover:text-indigo-600>
                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -57,7 +57,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                             </svg>
-                            Reservations</a>
+                            anonces</a>
                     </li>
 
                     <li>
@@ -131,7 +131,7 @@
 
 
 <div class="max-w-2xl mx-auto mt-6">
-    <h1 class="text-2xl font-bold text-black">Reservations for Your Houses</h1>
+    <h1 class="text-2xl font-bold text-black"> Your Reservations </h1>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <div class="p-4">
             <label for="table-search" class="sr-only">Search</label>
@@ -159,13 +159,19 @@
                     <th scope="col" class="px-6 py-3">
                        client
                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        status
+                     </th>
+                    <th scope="col" class="px-6 py-3">
+                        update
+                     </th>
                     
                    
                    
                 </tr>
             </thead>
             
-@if(count($reservations) > 0)
+
             @foreach($reservations as $reservation)
             <tbody>
                 <tr
@@ -176,14 +182,53 @@
                   </td>
                    
                      <td class="px-6 py-4">
-                        {{ $reservation->client->name }}
+                        {{ $reservation->house->city }}
                     </td> 
-                   
+                    <td class="px-6 py-4">
+                        {{ $reservation->status }}
+                    </td> 
+
+                    <td class="px-6 py-4">
+                        <button id="button{{ $reservation->id }}" onclick="toggleModal('progress-modal{{ $reservation->id }}', 'button{{ $reservation->id }}')"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</button>                    </td>
+
             </tbody>
+
+
+            <div id="progress-modal{{ $reservation->id }}"
+                class="hidden fixed inset-0 z-50 justify-center items-center w-full h-full">
+                <div class="relative p-4 w-full max-w-md max-h-full">
+                
+                  <div class="relative py-4 px-5  bg-white rounded-lg shadow dark:bg-gray-700 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 ">
+              
+                    <form class="" method="POST" action="/update/reservation/{{ $reservation->id }}">
+                        @csrf
+                        @method('PUT')
+                        <div class="relative">
+                            <label for="statu" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">status</label>
+                            <select name="status" id="statu"
+                                class="citySelect bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                <option value="pending" {{ $reservation->status === 'pending' ? 'selected' : '' }}>pending</option>
+                                <option value="canceled" {{ $reservation->status === 'done' ? 'selected' : '' }}>canceled</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center mt-6 space-x-4 rtl:space-x-reverse">
+                            <button type="submit"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">confirm</button>
+                            <button onclick="closeModal('progress-modal{{ $reservation->id }}')" type="button"
+                                class="py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Cancel</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+                </div>
+          
+            </div>
             @endforeach
         </table>
     </div>
 
-    @else
-    <p>You haven't any reservations yet.</p>
-@endif
+<script src="js/cities.js"></script>
+</body>
+</html>
+    

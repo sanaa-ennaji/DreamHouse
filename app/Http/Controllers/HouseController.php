@@ -93,10 +93,8 @@ class HouseController extends Controller
 
     public function edit($id)
     {
-        // Find the house by ID
+       
         $house = $this->houseRepository->getHouseById($id);
-
-        // Check if the authenticated user owns the house
         if (Auth::id() !== $house->user_id) {
             return redirect()->route('houses.index')->with('error', 'Unauthorized');
         }
@@ -106,27 +104,21 @@ class HouseController extends Controller
 
     public function update(Request $request, $id)
     {
-        // Validate the request data
+       
         $this->validateUpdate($request);
-
-        // Find the house by ID
         $house = $this->houseRepository->getHouseById($id);
-
-        // Check if the authenticated user owns the house
         if (Auth::id() !== $house->user_id) {
             return redirect()->route('houses.index')->with('error', 'Unauthorized');
         }
-
-        // Update the house using the validated data
         $this->houseRepository->updateHouse($id, $request->all());
 
         return redirect()->route('houses.index')->with('success', 'House updated successfully');
     }
 
-    // Rename the method to avoid conflicts with the base controller
+ 
     protected function validateUpdate(Request $request)
     {
-        // Validate the request data
+       
         $request->validate([
             'type' => 'required|string',
             'status' => 'required|in:sale,rent',
@@ -137,7 +129,7 @@ class HouseController extends Controller
             'price' => 'required|string',
             'size' => 'nullable|string',
             'description' => 'nullable|string',
-            // Add any other validation rules as needed
+           
         ]);
     }
 }

@@ -60,6 +60,12 @@ Route::get('/clientRegister' , function (){
 Route::get('/reservation', [HouseController::class, 'showReservationsForUserHouses'])->name('houses.reservations');
 
 Route::middleware(['auth'])->group(function () {
-  
-    Route::delete('/houses/{id}', [HouseController::class, 'destroy'])->name('houses.destroy');
+Route::delete('/houses/{id}', [HouseController::class, 'destroy'])->name('houses.destroy');
+});
+
+
+
+Route::middleware(['auth'])->group(function () {
+    // Other routes...
+    Route::get('/clientReservations', [ReservationController::class, 'index'])->name('reservations.index');
 });

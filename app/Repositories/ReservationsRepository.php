@@ -17,6 +17,10 @@ class ReservationsRepository implements ReservationsRepositoryInterface
         return Reservation::findOrFail($id);
     }
 
+     public function getReservationsByUserId($userId)
+    {
+        return Reservation::where('user_id', $userId)->get();
+    }
     public function create(array $data)
     {
         return Reservation::create($data);

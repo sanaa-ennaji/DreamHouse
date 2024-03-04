@@ -138,9 +138,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-       
-       
+            </div> 
 </a>
     @endforeach
 </div>

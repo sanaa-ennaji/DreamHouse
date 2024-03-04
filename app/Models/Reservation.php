@@ -20,6 +20,11 @@ class Reservation extends Model
     {
         return $this->belongsTo(House::class);
     }
+
+    public function client()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
   
 }
 

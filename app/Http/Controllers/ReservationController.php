@@ -16,7 +16,7 @@ class ReservationController extends Controller
         $this->reservationRepository = $reservationRepository;
     }
 
-    
+
     public function create(Request $request)
     {
         $rules = [
@@ -33,6 +33,13 @@ class ReservationController extends Controller
 
 
         return redirect('/anonces');
+    }
+
+    public function index()
+    {
+        $userId = Auth::id();
+        $reservations = $this->reservationRepository->getReservationsByUserId($userId);
+        return view('clientReservations', compact('reservations'));
     }
 
 

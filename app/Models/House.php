@@ -29,4 +29,9 @@ class House extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    public function reservation ()
+    {
+        return $this->hasMany(reservation::class);
+    }
 }

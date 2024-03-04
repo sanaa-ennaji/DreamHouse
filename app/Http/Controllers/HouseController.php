@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
-use App\RepositoryInterfaces\HousesRepositoryInterface;
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use App\RepositoryInterfaces\HousesRepositoryInterface;
 
 class HouseController extends Controller
 {
@@ -55,7 +56,6 @@ public function createHouse(Request $request)
     
     $house = $this->houseRepository->createHouse($validatedData);
 
-    // return response()->json(['message' => 'House created successfully', 'house' => $house], 201);
     return view('houses');
 }
   
@@ -65,6 +65,13 @@ public function display()
     $houses = $this->houseRepository->getAllOrderedByCity();
 
     return view('anonces', compact('houses'));
+}
+
+public function show($id)
+{
+    $house = $this->houseRepository->getHouseById($id);
+
+    return view('house', compact('house'));
 }
 
 }

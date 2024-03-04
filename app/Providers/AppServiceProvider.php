@@ -2,11 +2,15 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use App\Repositories\UsersRepository;
-use App\RepositoryInterfaces\UsersRepositoryInterface;
 use App\Repositories\HousesRepository;
+use Illuminate\Support\ServiceProvider;
+
+use App\RepositoryInterfaces\UsersRepositoryInterface;
 use App\RepositoryInterfaces\HousesRepositoryInterface;
+
+use App\Repositories\ReservationsRepository;
+use App\RepositoryInterfaces\ReservationsRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         
             $this->app->bind(UsersRepositoryInterface::class, UsersRepository::class);
             $this->app->bind(HousesRepositoryInterface::class, HousesRepository::class);
+            $this->app->bind(ReservationsRepositoryInterface::class, ReservationsRepository::class);
         
     }
 

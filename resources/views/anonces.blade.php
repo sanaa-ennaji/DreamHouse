@@ -111,6 +111,7 @@
                             </svg>
                             <p><span class="text-gray-900 font-bold">2</span>{{ $house->Bathrooms }} Bathrooms</p>
                         </div>
+                        <a href="{{ route('houses.show', ['id' => $house->id]) }}">View Details</a>
                     </div>
                     <div class="px-4 pt-3 pb-4 border-t border-gray-300 bg-gray-100">
                         <div class="text-xs uppercase font-bold text-gray-600 tracking-wide">owner</div>
@@ -118,6 +119,7 @@
                             <div class="bg-cover bg-center w-10 h-10 rounded-full mr-3" style="background-image: url(https://images.unsplash.com/photo-1500522144261-ea64433bbe27?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=751&q=80)">
                             </div>
                             <div>
+
                                 <p class="font-bold text-gray-900">{{ $house->owner->name }}</p>
                                 <p class="text-sm text-gray-700">{{ $house->owner->phone }}</p>
                             </div>

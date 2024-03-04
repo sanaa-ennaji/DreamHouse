@@ -37,9 +37,15 @@ Route::get('/login' , function (){
 Route::get('/anonces' , function (){
     return view('anonces');
 });
+// Route::get('/houses/{id}' , function (){
+//     return view('/h');
+// });
+
 
     Route::post('/OwnersRegister', [UserController::class, 'OwnerRegister']);
     Route::post('/createHouse', [HouseController::class, 'createHouse']);
     Route::post('/login', [UserController::class, 'login']);
     Route::get('/anonces', [HouseController::class, 'display'])->name('houses.display');
+
+    Route::get('/house/{id}', [HouseController::class, 'show'])->name('houses.show');
 

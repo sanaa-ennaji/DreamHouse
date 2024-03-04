@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Reservatin extends Model
+class Reservation extends Model
 {
     use HasFactory;
 
@@ -14,6 +14,11 @@ class Reservatin extends Model
         'user_id',
 
     ];
+
+    public function HouseReserved()
+    {
+        return $this->belongsTo(user::class, 'house_id');
+    }
 
   
 }

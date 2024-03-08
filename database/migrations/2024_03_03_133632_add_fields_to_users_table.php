@@ -17,8 +17,7 @@ return new class extends Migration
                 $table->string('phone')->nullable();
                 $table->string('profile')->nullable();
                 $table->string('address')->nullable();
-             
-    
+                
                 });
         });
     }

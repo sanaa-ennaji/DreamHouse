@@ -59,7 +59,6 @@
                             </svg>
                             Reservations</a>
                     </li>
-
                     <li>
                         <a href="\houses"
                             class="flex items-centerx text-sm font-semibold text-gray-500 hover:text-indigo-600 transition duration-200">
